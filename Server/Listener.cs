@@ -42,7 +42,7 @@ namespace Server
             s.Bind(new IPEndPoint(0, Port));
             s.Listen(0);
 
-            //s.BeginAccept(callback, null);
+            s.BeginAccept(callback, null);
             Listening = true;
         }
 
@@ -56,6 +56,26 @@ namespace Server
             s = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         }
 
-     
+        void callback(IAsyncResult ar)
+        {
+            try
+            {
+                Socket s = this.s.EndAccept(ar);
+
+                if (SocketAccepted != null)
+                {
+                    SocketAccepted(s);
+                }
+
+                this.s.BeginAccept(callback, null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public delegate void SocketAcceptedHandler(Socket e);
+        public event SocketAcceptedHandler SocketAccepted;
     }
 }
