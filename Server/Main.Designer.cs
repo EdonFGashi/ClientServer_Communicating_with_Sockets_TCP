@@ -172,7 +172,145 @@
             label4.Size = new Size(136, 20);
             label4.TabIndex = 8;
             label4.Text = "Shared folder path:";
-            
+            // 
+            // picListening
+            // 
+            picListening.Image = (Image)resources.GetObject("picListening.Image");
+            picListening.Location = new Point(798, 10);
+            picListening.Name = "picListening";
+            picListening.Size = new Size(58, 56);
+            picListening.SizeMode = PictureBoxSizeMode.Zoom;
+            picListening.TabIndex = 7;
+            picListening.TabStop = false;
+            // 
+            // btnShowIP
+            // 
+            btnShowIP.BackColor = Color.Salmon;
+            btnShowIP.Location = new Point(268, 21);
+            btnShowIP.Name = "btnShowIP";
+            btnShowIP.Size = new Size(94, 29);
+            btnShowIP.TabIndex = 6;
+            btnShowIP.Text = "Show IP";
+            btnShowIP.UseVisualStyleBackColor = false;
+            //btnShowIP.Click += button1_Click_1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(28, 24);
+            label2.Name = "label2";
+            label2.Size = new Size(24, 20);
+            label2.TabIndex = 5;
+            label2.Text = "IP:";
+            //label2.Click += label2_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(393, 24);
+            label1.Name = "label1";
+            label1.Size = new Size(98, 20);
+            label1.TabIndex = 4;
+            label1.Text = "Listening Port";
+            //label1.Click += label1_Click;
+            // 
+            // tabChat
+            // 
+            tabChat.Controls.Add(listBox1);
+            tabChat.Location = new Point(4, 29);
+            tabChat.Name = "tabChat";
+            tabChat.Padding = new Padding(3);
+            tabChat.Size = new Size(862, 310);
+            tabChat.TabIndex = 1;
+            tabChat.Text = "Chat";
+            tabChat.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            listBox1.Cursor = Cursors.No;
+            listBox1.FormattingEnabled = true;
+            listBox1.HorizontalScrollbar = true;
+            listBox1.Location = new Point(6, 6);
+            listBox1.Name = "listBox1";
+            listBox1.ScrollAlwaysVisible = true;
+            listBox1.Size = new Size(763, 244);
+            listBox1.TabIndex = 1;
+            listBox1.Tag = "";
+            //listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged_1;
+            // 
+            // txtClient
+            // 
+            txtClient.Location = new Point(171, 376);
+            txtClient.Name = "txtClient";
+            txtClient.Size = new Size(293, 27);
+            txtClient.TabIndex = 5;
+            //// 
+            //// checkRead
+            //// 
+            checkRead.AutoSize = true;
+            checkRead.Location = new Point(506, 366);
+            checkRead.Name = "checkRead";
+            checkRead.Size = new Size(65, 24);
+            checkRead.TabIndex = 6;
+            checkRead.Text = "Read";
+            checkRead.UseVisualStyleBackColor = true;
+            // 
+            // checkWrite
+            // 
+            checkWrite.AutoSize = true;
+            checkWrite.Location = new Point(506, 396);
+            checkWrite.Name = "checkWrite";
+            checkWrite.Size = new Size(67, 24);
+            checkWrite.TabIndex = 7;
+            checkWrite.Text = "Write";
+            checkWrite.UseVisualStyleBackColor = true;
+            // 
+            // checkExecute
+            // 
+            checkExecute.AutoSize = true;
+            checkExecute.Location = new Point(506, 426);
+            checkExecute.Name = "checkExecute";
+            checkExecute.Size = new Size(82, 24);
+            checkExecute.TabIndex = 8;
+            checkExecute.Text = "Execute";
+            checkExecute.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(34, 379);
+            label3.Name = "label3";
+            label3.Size = new Size(131, 20);
+            label3.TabIndex = 9;
+            label3.Text = "Client Name or ID:";
+            //label3.Click += label3_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(656, 363);
+            button1.Name = "button1";
+            button1.Size = new Size(183, 29);
+            button1.TabIndex = 10;
+            button1.Text = "Update permission";
+            button1.UseVisualStyleBackColor = true;
+            //button1.Click += button1_Click_2;
+            // 
+            // btnUpdateFileAccess
+            // 
+            btnUpdateFileAccess.Location = new Point(656, 409);
+            btnUpdateFileAccess.Name = "btnUpdateFileAccess";
+            btnUpdateFileAccess.Size = new Size(183, 29);
+            btnUpdateFileAccess.TabIndex = 11;
+            btnUpdateFileAccess.Text = "Update file access";
+            btnUpdateFileAccess.UseVisualStyleBackColor = true;
+            //btnUpdateFileAccess.Click += button2_Click;
+            // 
+            // txtFiles
+            // 
+            txtFiles.Location = new Point(101, 423);
+            txtFiles.Name = "txtFiles";
+            txtFiles.Size = new Size(363, 27);
+            txtFiles.TabIndex = 12;
             // 
             // Main
             // 
