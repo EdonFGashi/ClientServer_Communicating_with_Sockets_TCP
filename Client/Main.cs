@@ -1,4 +1,4 @@
-namespace Server
+namespace Client
 {
     public partial class Main : Form
     {
@@ -7,7 +7,7 @@ namespace Server
             InitializeComponent();
         }
 
-        private void btnListen_Click(object sender, EventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
 
         }

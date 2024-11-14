@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             listClients = new ListView();
             colEndpoint = new ColumnHeader();
             colID = new ColumnHeader();
@@ -71,7 +70,6 @@
             listClients.TabIndex = 0;
             listClients.UseCompatibleStateImageBehavior = false;
             listClients.View = View.Details;
-            //listClients.SelectedIndexChanged += listClients_SelectedIndexChanged;
             // 
             // colEndpoint
             // 
@@ -124,7 +122,7 @@
             btnListen.TabIndex = 3;
             btnListen.Text = "Listen";
             btnListen.UseVisualStyleBackColor = false;
-            //btnListen.Click += button1_Click;
+            btnListen.Click += btnListen_Click;
             // 
             // ts
             // 
@@ -175,7 +173,6 @@
             // 
             // picListening
             // 
-            picListening.Image = (Image)resources.GetObject("picListening.Image");
             picListening.Location = new Point(798, 10);
             picListening.Name = "picListening";
             picListening.Size = new Size(58, 56);
@@ -192,7 +189,6 @@
             btnShowIP.TabIndex = 6;
             btnShowIP.Text = "Show IP";
             btnShowIP.UseVisualStyleBackColor = false;
-            //btnShowIP.Click += button1_Click_1;
             // 
             // label2
             // 
@@ -202,7 +198,6 @@
             label2.Size = new Size(24, 20);
             label2.TabIndex = 5;
             label2.Text = "IP:";
-            //label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -212,7 +207,6 @@
             label1.Size = new Size(98, 20);
             label1.TabIndex = 4;
             label1.Text = "Listening Port";
-            //label1.Click += label1_Click;
             // 
             // tabChat
             // 
@@ -236,7 +230,6 @@
             listBox1.Size = new Size(763, 244);
             listBox1.TabIndex = 1;
             listBox1.Tag = "";
-            //listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged_1;
             // 
             // txtClient
             // 
@@ -244,9 +237,9 @@
             txtClient.Name = "txtClient";
             txtClient.Size = new Size(293, 27);
             txtClient.TabIndex = 5;
-            //// 
-            //// checkRead
-            //// 
+            // 
+            // checkRead
+            // 
             checkRead.AutoSize = true;
             checkRead.Location = new Point(506, 366);
             checkRead.Name = "checkRead";
@@ -283,7 +276,6 @@
             label3.Size = new Size(131, 20);
             label3.TabIndex = 9;
             label3.Text = "Client Name or ID:";
-            //label3.Click += label3_Click;
             // 
             // button1
             // 
@@ -293,7 +285,6 @@
             button1.TabIndex = 10;
             button1.Text = "Update permission";
             button1.UseVisualStyleBackColor = true;
-            //button1.Click += button1_Click_2;
             // 
             // btnUpdateFileAccess
             // 
@@ -303,7 +294,6 @@
             btnUpdateFileAccess.TabIndex = 11;
             btnUpdateFileAccess.Text = "Update file access";
             btnUpdateFileAccess.UseVisualStyleBackColor = true;
-            //btnUpdateFileAccess.Click += button2_Click;
             // 
             // txtFiles
             // 
