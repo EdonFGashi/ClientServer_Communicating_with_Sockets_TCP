@@ -16,7 +16,7 @@ namespace Server
             private set;
         }
 
-
+        public ClientPermissions Permissions { get; private set; }
 
         public IPEndPoint EndPoint
         {
@@ -30,7 +30,10 @@ namespace Server
             private set;
         }
 
-   
+        public void setClientPermissions(ClientPermissions permissions)
+        {
+            Permissions = permissions;
+        }
 
 
         public void setName(string name)
