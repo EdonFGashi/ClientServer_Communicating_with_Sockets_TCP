@@ -31,14 +31,20 @@ namespace Client
         {
 
         }
+
+        void client_Received()
+        {
+            cancellationTokenSource = new CancellationTokenSource();
+            CancellationToken token = cancellationTokenSource.Token;
+
+        }
+
+
+
+
+
+
+
+
+
     }
-
-
-
-
-
-
-
-
-
-}
