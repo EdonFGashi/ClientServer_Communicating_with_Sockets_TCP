@@ -81,6 +81,24 @@
             txtMessage.Size = new Size(288, 27);
             txtMessage.TabIndex = 2;
             txtMessage.TextChanged += textBox1_TextChanged;
+            // 
+            // btnClose
+            // 
+            btnClose.BackColor = SystemColors.ActiveCaption;
+            btnClose.Location = new Point(578, 473);
+            btnClose.Name = "btnClose";
+            btnClose.Size = new Size(249, 42);
+            btnClose.TabIndex = 3;
+            btnClose.Text = "Close";
+            btnClose.UseVisualStyleBackColor = false;
+            btnClose.Click += btnClose_Click;
+            // 
+            // txtIP
+            // 
+            txtIP.Location = new Point(46, 47);
+            txtIP.Name = "txtIP";
+            txtIP.Size = new Size(165, 27);
+            txtIP.TabIndex = 4;
             #endregion
         }
     }
