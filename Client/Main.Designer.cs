@@ -62,6 +62,17 @@
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = false;
             btnSend.Click += button1_Click;
+            // 
+            // btnConnect
+            // 
+            btnConnect.BackColor = SystemColors.Info;
+            btnConnect.Location = new Point(190, 113);
+            btnConnect.Name = "btnConnect";
+            btnConnect.Size = new Size(160, 31);
+            btnConnect.TabIndex = 1;
+            btnConnect.Text = "Connect";
+            btnConnect.UseVisualStyleBackColor = false;
+            btnConnect.Click += button1_Click_1;
 
             #endregion
         }
