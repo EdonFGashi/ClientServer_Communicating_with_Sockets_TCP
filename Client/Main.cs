@@ -1,4 +1,5 @@
 using System.Net.Sockets;
+using System.Text;
 
 namespace Client
 {
@@ -55,9 +56,30 @@ namespace Client
                         {
                             listOutput.Items.Add(receivedData);
                         }
-                       
+                        else if (receivedData.StartsWith("~")) //kur nga serveri i dergojme filet qe jane shared me klienta
+                        {
+                            //emrat e fileve i ndajme me ~
+                            string[] fileNames = receivedData.Split(new[] { '~' }, StringSplitOptions.RemoveEmptyEntries);
 
-                }
+                            // e pastrojme kur e bejme update
+                            listFiles.Items.Clear();
+                            foreach (var fileName in fileNames)
+                            {
+                                listFiles.Items.Add(fileName);
+                            }
+                        }
+                        else if (receivedData == "RECEIVE FILE")
+                        {
+
+                            //kur pranojme file (nga kerkesa per read) e therrasim medoten qe e
+                            //ben receive filen
+                            ReceiveFile(txtSelectedFile.Text);
+                            //pasi kryhet metoda per pranim te files i tregojme serverit se file eshte pranuar
+                            sck.Send(Encoding.Default.GetBytes("File arrived to client " + clientName + "  succesfully at time: " + DateTime.Now));
+                        }
+
+
+                    }
 
 
 
