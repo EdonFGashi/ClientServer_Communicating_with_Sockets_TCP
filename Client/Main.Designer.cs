@@ -99,6 +99,13 @@
             txtIP.Name = "txtIP";
             txtIP.Size = new Size(165, 27);
             txtIP.TabIndex = 4;
+            // 
+            // txtPort
+            // 
+            txtPort.Location = new Point(272, 47);
+            txtPort.Name = "txtPort";
+            txtPort.Size = new Size(78, 27);
+            txtPort.TabIndex = 5;
             #endregion
         }
     }
