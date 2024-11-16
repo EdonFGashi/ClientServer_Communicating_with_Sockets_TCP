@@ -124,6 +124,36 @@ namespace Client
             listFiles.Size = new Size(441, 144);
             listFiles.TabIndex = 7;
             listFiles.SelectedIndexChanged += listFiles_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(389, 24);
+            label1.Name = "label1";
+            label1.Size = new Size(83, 20);
+            label1.TabIndex = 8;
+            label1.Text = "Server Files";
+            label1.Click += label1_Click;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(407, 240);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 9;
+            button1.Text = "Read";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_2;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(561, 240);
+            button2.Name = "button2";
+            button2.Size = new Size(94, 29);
+            button2.TabIndex = 10;
+            button2.Text = "Write";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             #endregion
         }
     }
