@@ -1,4 +1,6 @@
-﻿namespace Client
+﻿using System.Xml.Linq;
+
+namespace Client
 {
     partial class Main
     {
@@ -106,6 +108,13 @@
             txtPort.Name = "txtPort";
             txtPort.Size = new Size(78, 27);
             txtPort.TabIndex = 5;
+            // 
+            // txtName
+            // 
+            txtName.Location = new Point(74, 80);
+            txtName.Name = "txtName";
+            txtName.Size = new Size(276, 27);
+            txtName.TabIndex = 6;
             #endregion
         }
     }
