@@ -51,6 +51,11 @@ namespace Client
                     // Receive the first part: Check if the message is a file transfer request
                     int receivedBytes = sck.Receive(buffer);
 
+                        if (receivedData.StartsWith("SERVER WARNING: "))
+                        {
+                            listOutput.Items.Add(receivedData);
+                        }
+                       
 
                 }
 
