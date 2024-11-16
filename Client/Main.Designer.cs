@@ -115,6 +115,15 @@ namespace Client
             txtName.Name = "txtName";
             txtName.Size = new Size(276, 27);
             txtName.TabIndex = 6;
+            // 
+            // listFiles
+            // 
+            listFiles.FormattingEnabled = true;
+            listFiles.Location = new Point(389, 47);
+            listFiles.Name = "listFiles";
+            listFiles.Size = new Size(441, 144);
+            listFiles.TabIndex = 7;
+            listFiles.SelectedIndexChanged += listFiles_SelectedIndexChanged;
             #endregion
         }
     }
