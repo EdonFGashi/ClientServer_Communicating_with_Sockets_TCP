@@ -32,12 +32,27 @@ namespace Client
 
         }
 
+        //metoda qe krijon threadin e klientit dhe e pranon mesazhet nga serveri
+
         void client_Received()
         {
             cancellationTokenSource = new CancellationTokenSource();
             CancellationToken token = cancellationTokenSource.Token;
+            new Thread(() =>
+            {
+            while (!token.IsCancellationRequested)
+            {
+                try
+                {
 
-        }
+
+                    byte[] buffer = new byte[8192]; // bufer per ruajtjen e te dhenave te pranuara
+
+                    // Receive the first part: Check if the message is a file transfer request
+                    int receivedBytes = sck.Receive(buffer);
+
+
+                }
 
 
 
