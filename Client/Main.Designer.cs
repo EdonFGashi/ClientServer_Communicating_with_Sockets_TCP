@@ -73,7 +73,14 @@
             btnConnect.Text = "Connect";
             btnConnect.UseVisualStyleBackColor = false;
             btnConnect.Click += button1_Click_1;
-
+            // 
+            // txtMessage
+            // 
+            txtMessage.Location = new Point(62, 204);
+            txtMessage.Name = "txtMessage";
+            txtMessage.Size = new Size(288, 27);
+            txtMessage.TabIndex = 2;
+            txtMessage.TextChanged += textBox1_TextChanged;
             #endregion
         }
     }
