@@ -33,6 +33,16 @@ namespace Client
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int s = sck.Send(Encoding.Default.GetBytes(txtMessage.Text));
+
+            if (s > 0)
+            {
+                MessageBox.Show("Data Sent !");
+            }
+        }
+
         //metoda qe krijon threadin e klientit dhe e pranon mesazhet nga serveri
 
         void client_Received()
