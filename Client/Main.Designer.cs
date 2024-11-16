@@ -23,24 +23,40 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
+            btnSend = new Button();
+            btnConnect = new Button();
+            txtMessage = new TextBox();
+            btnClose = new Button();
+            txtIP = new TextBox();
+            txtPort = new TextBox();
+            txtName = new TextBox();
+            listFiles = new ListBox();
+            label1 = new Label();
+            button1 = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            listOutput = new ListBox();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            txtSelectedFile = new TextBox();
+            label7 = new Label();
+            txtSavingFilePath = new TextBox();
+            label8 = new Label();
             SuspendLayout();
             // 
-            // Main
+            // btnSend
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Name = "Main";
-            Text = "Form1";
-            Load += Main_Load;
-            ResumeLayout(false);
-        }
 
-        #endregion
+
+            #endregion
+        }
     }
 }

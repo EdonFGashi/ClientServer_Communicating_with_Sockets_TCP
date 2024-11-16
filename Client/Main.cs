@@ -77,6 +77,20 @@ namespace Client
                             //pasi kryhet metoda per pranim te files i tregojme serverit se file eshte pranuar
                             sck.Send(Encoding.Default.GetBytes("File arrived to client " + clientName + "  succesfully at time: " + DateTime.Now));
                         }
+                        else if (receivedData.StartsWith("EXECUTION RESULT: ")) //nese eshte ekzekutim
+                        {
+
+                            listOutput.Items.Add(receivedData);
+                        }
+                    }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Error while communicating with server, please try again !");
+                    }
+                }
+    }).Start();
+}
 
 
                     }
