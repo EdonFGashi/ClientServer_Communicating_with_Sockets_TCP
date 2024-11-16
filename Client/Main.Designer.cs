@@ -54,7 +54,14 @@
             // 
             // btnSend
             // 
-
+            btnSend.BackColor = SystemColors.GrayText;
+            btnSend.Location = new Point(190, 237);
+            btnSend.Name = "btnSend";
+            btnSend.Size = new Size(160, 34);
+            btnSend.TabIndex = 0;
+            btnSend.Text = "Send";
+            btnSend.UseVisualStyleBackColor = false;
+            btnSend.Click += button1_Click;
 
             #endregion
         }
