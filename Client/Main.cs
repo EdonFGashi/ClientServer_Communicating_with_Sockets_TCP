@@ -2,6 +2,16 @@ using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Xml.Linq;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.Threading;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace Client
 {
@@ -121,8 +131,13 @@ namespace Client
 
                         // Receive the first part: Check if the message is a file transfer request
                         int receivedBytes = sck.Receive(buffer);
+                        if (receivedBytes > 0)
+                        {
+                            // Convert the byte array to a string
+                            string receivedData = Encoding.Default.GetString(buffer, 0, receivedBytes);
 
-                        if (receivedData.StartsWith("SERVER WARNING: "))
+
+                            if (receivedData.StartsWith("SERVER WARNING: "))
                         {
                             listOutput.Items.Add(receivedData);
                         }
