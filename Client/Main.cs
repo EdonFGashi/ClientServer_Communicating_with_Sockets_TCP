@@ -201,6 +201,12 @@ namespace Client
                 // Receive the file size
                 receivedBytes = sck.Receive(buffer, 0, 8, SocketFlags.None);
                 long fileSize = BitConverter.ToInt64(buffer, 0); // The size of the file to be received
+                
+                // Create a file stream to write the incoming data to disk
+                using (FileStream fs = new FileStream(fullFileName, FileMode.Create, FileAccess.Write))
+                {
+                    long bytesReceived = 0;
+
 
 
         private void textBox1_TextChanged(object sender, EventArgs e)
