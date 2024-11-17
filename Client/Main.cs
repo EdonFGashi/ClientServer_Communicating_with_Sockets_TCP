@@ -214,6 +214,21 @@ namespace Client
                         // Receive data into the buffer
                         receivedBytes = sck.Receive(buffer, 0, bytesToRead, SocketFlags.None);
 
+                     
+                    }
+                }
+
+                MessageBox.Show($"File {receivedFileName} received and saved to {fullFileName}");
+                listOutput.Items.Add("File received successfully");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error receiving the file: {ex.Message}");
+                listOutput.Items.Add("Error while receiving file");
+            }
+        }
+
+
 
 
 
