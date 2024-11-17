@@ -200,6 +200,15 @@ namespace Client
             label4.Size = new Size(52, 20);
             label4.TabIndex = 15;
             label4.Text = "Name:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(12, 207);
+            label5.Name = "label5";
+            label5.Size = new Size(44, 20);
+            label5.TabIndex = 16;
+            label5.Text = "Data:";
 
         }
     }
