@@ -194,6 +194,10 @@ namespace Client
                 receivedBytes = sck.Receive(buffer, 0, 4, SocketFlags.None);
                 int fileNameLength = BitConverter.ToInt32(buffer, 0); // The length of the file name
                 string fullFileName = Path.Combine(@txtSavingFilePath.Text, fileName); // Specify the path to save the file
+                                                                                       // Receive the file name itself
+                receivedBytes = sck.Receive(buffer, 0, fileNameLength, SocketFlags.None);
+                string receivedFileName = Encoding.Default.GetString(buffer, 0, fileNameLength);
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
