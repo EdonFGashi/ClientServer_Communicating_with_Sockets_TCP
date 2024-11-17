@@ -200,7 +200,12 @@ namespace Server
 
 
                                         //////////////////////////////////////
-                                        
+                                        listBox1.Items.Add("Request from client: " + client.clientName + " for reading file " + filePathRequest + " has accepted. Time: " + DateTime.Now);
+                                        client.sck.Send(Encoding.Default.GetBytes("RECEIVE FILE"));
+                                        filePathRequest += clientRequest.Substring(6);
+                                        SendFileToClient(client.sck, filePathRequest);
+                                        client.sck.Send(Encoding.Default.GetBytes("FINISHED RECEIVE"));
+
                                     }
                                     else // nese nuk ka permission atehere i kthejme nje mesazh
                                     {
@@ -223,7 +228,14 @@ namespace Server
 
 
                                         ///////////////////////////////////////
-                                        
+                                        listBox1.Items.Add("Request from client: " + client.clientName + " for writing file " + filePathRequest + " has accepted. Time: " + DateTime.Now);
+                                        client.sck.Send(Encoding.Default.GetBytes("WRITE FILE"));
+                                        string[] writeRequest = clientRequest.Split(new[] { '~' }, StringSplitOptions.RemoveEmptyEntries);
+                                        listBox1.Items.Add("Pjesa 1: " + writeRequest[0]);
+                                        listBox1.Items.Add("Pjesa 2: " + writeRequest[1]);
+                                        listBox1.Items.Add("Pjesa 3: " + writeRequest[2]);
+                                        writeToFile(writeRequest[1], writeRequest[2]);
+                                        listBox1.Items.Add("File is written successfully, time: " + DateTime.Now);
                                     }
                                     else
                                     {
@@ -244,7 +256,9 @@ namespace Server
                                         listBox1.Items.Add("Request from client: " + client.clientName + " for executing file " + filePathRequest + " has accepted. Time: " + DateTime.Now);
                                         client.sck.Send(Encoding.Default.GetBytes("SERVER: File is executing..."));
 
-                                        
+                                        string[] executeRequest = clientRequest.Split(new[] { '~' }, StringSplitOptions.RemoveEmptyEntries);
+                                        string executionResult = ExecuteScript(executeRequest[1]);
+                                        client.sck.Send(Encoding.Default.GetBytes("EXECUTION RESULT: " + executionResult));
                                     }
                                     else
                                     {
@@ -463,6 +477,73 @@ namespace Server
         //Metod per menaxhimin e permissions
         private void button1_Click_2(object sender, EventArgs e)
         {
+            
+        }
+
+        private void btnListen_Click(object sender, EventArgs e)
+        {
+            string portText = txtPort.Text;
+            int.TryParse(portText, out int port);
+            listener = new Listener(port);
+
+            //listener.setPort(port);
+            listener.SocketAccepted += new Listener.SocketAcceptedHandler(listener_SocketAccepted);
+            Load += new EventHandler(Main_Load);
+            listener.Start();
+
+            btnListen.BackColor = Color.LightBlue;
+            sharedFolderPath = txtSharedFolderPath.Text.ToString();
+        }
+
+        //////////////////////////////////////////
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string sharedFolderPath = txtSharedFolderPath.Text;
+            string files = "~";
+            try
+            {
+                // Get all file paths in the directory
+                string[] filePaths = Directory.GetFiles(sharedFolderPath);
+
+                // Loop through each file and print the file name
+                foreach (string filePath in filePaths)
+                {
+                    string fileName = Path.GetFileName(filePath); // Extract just the file name
+                    files += fileName + "~";
+
+                }
+                txtFiles.Text = files;
+                listBox1.Items.Add(files);
+
+
+
+
+                byte[] fileNameBytes = Encoding.Default.GetBytes(files);
+                for (int i = 0; i < listClients.Items.Count; i++)
+                {
+                    Client client = listClients.Items[i].Tag as Client;
+
+                    if (client.Permissions.HasPermission(sharedFolderPath, FilePermissions.Read)
+                        || client.Permissions.HasPermission(sharedFolderPath, FilePermissions.Write)
+                        || client.Permissions.HasPermission(sharedFolderPath, FilePermissions.Execute)
+                        || client.Permissions.HasPermission(sharedFolderPath, FilePermissions.ReadWrite)
+                        || client.Permissions.HasPermission(sharedFolderPath, FilePermissions.All))
+                    {
+                        client.sck.Send(fileNameBytes);
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                listBox1.Items.Add("Error while sending file names !");
+            }
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
             try
             {
                 Invoke((MethodInvoker)delegate
@@ -506,13 +587,7 @@ namespace Server
             }
         }
 
-        private void btnListen_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //////////////////////////////////////////
-        private void button2_Click(object sender, EventArgs e)
+        private void btnUpdateFileAccess_Click(object sender, EventArgs e)
         {
             string sharedFolderPath = txtSharedFolderPath.Text;
             string files = "~";

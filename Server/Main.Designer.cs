@@ -285,6 +285,7 @@
             button1.TabIndex = 10;
             button1.Text = "Update permission";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click_1;
             // 
             // btnUpdateFileAccess
             // 
@@ -294,6 +295,7 @@
             btnUpdateFileAccess.TabIndex = 11;
             btnUpdateFileAccess.Text = "Update file access";
             btnUpdateFileAccess.UseVisualStyleBackColor = true;
+            btnUpdateFileAccess.Click += btnUpdateFileAccess_Click;
             // 
             // txtFiles
             // 
