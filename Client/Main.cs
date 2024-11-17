@@ -125,8 +125,6 @@ namespace Client
                 {
                     try
                     {
-
-
                         byte[] buffer = new byte[8192]; // bufer per ruajtjen e te dhenave te pranuara
 
                         // Receive the first part: Check if the message is a file transfer request
@@ -138,34 +136,36 @@ namespace Client
 
 
                             if (receivedData.StartsWith("SERVER WARNING: "))
-                        {
-                            listOutput.Items.Add(receivedData);
-                        }
-                        else if (receivedData.StartsWith("~")) //kur nga serveri i dergojme filet qe jane shared me klienta
-                        {
-                            //emrat e fileve i ndajme me ~
-                            string[] fileNames = receivedData.Split(new[] { '~' }, StringSplitOptions.RemoveEmptyEntries);
-
-                            // e pastrojme kur e bejme update
-                            listFiles.Items.Clear();
-                            foreach (var fileName in fileNames)
                             {
-                                listFiles.Items.Add(fileName);
+                                listOutput.Items.Add(receivedData);
+
                             }
-                        }
-                        else if (receivedData == "RECEIVE FILE")
-                        {
+                            else if (receivedData.StartsWith("~")) //kur nga serveri i dergojme filet qe jane shared me klienta
+                            {
+                                //emrat e fileve i ndajme me ~
+                                string[] fileNames = receivedData.Split(new[] { '~' }, StringSplitOptions.RemoveEmptyEntries);
 
-                            //kur pranojme file (nga kerkesa per read) e therrasim medoten qe e
-                            //ben receive filen
-                            ReceiveFile(txtSelectedFile.Text);
-                            //pasi kryhet metoda per pranim te files i tregojme serverit se file eshte pranuar
-                            sck.Send(Encoding.Default.GetBytes("File arrived to client " + clientName + "  succesfully at time: " + DateTime.Now));
-                        }
-                        else if (receivedData.StartsWith("EXECUTION RESULT: ")) //nese eshte ekzekutim
-                        {
+                                // e pastrojme kur e bejme update
+                                listFiles.Items.Clear();
+                                foreach (var fileName in fileNames)
+                                {
+                                    listFiles.Items.Add(fileName);
+                                }
+                            }
+                            else if (receivedData == "RECEIVE FILE")
+                            {
 
-                            listOutput.Items.Add(receivedData);
+                                //kur pranojme file (nga kerkesa per read) e therrasim medoten qe e
+                                //ben receive filen
+                                ReceiveFile(txtSelectedFile.Text);
+                                //pasi kryhet metoda per pranim te files i tregojme serverit se file eshte pranuar
+                                sck.Send(Encoding.Default.GetBytes("File arrived to client " + clientName + "  succesfully at time: " + DateTime.Now));
+                            }
+                            else if (receivedData.StartsWith("EXECUTION RESULT: ")) //nese eshte ekzekutim
+                            {
+
+                                listOutput.Items.Add(receivedData);
+                            }
                         }
                     }
                     catch (Exception ex)
@@ -293,7 +293,12 @@ namespace Client
             request += txtSelectedFile.Text;
             sck.Send(Encoding.Default.GetBytes(request));
         }
-       private void label8_Click(object sender, EventArgs e)
+
+        private void listFiles_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+        private void label8_Click(object sender, EventArgs e)
         {
 
         }
