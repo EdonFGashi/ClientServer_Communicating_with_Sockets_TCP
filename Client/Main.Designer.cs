@@ -252,7 +252,43 @@ namespace Client
             label8.TabIndex = 21;
             label8.Text = "File saving path:";
             label8.Click += label8_Click;
-
+            // 
+            // Main
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(842, 527);
+            Controls.Add(label8);
+            Controls.Add(txtSavingFilePath);
+            Controls.Add(label7);
+            Controls.Add(txtSelectedFile);
+            Controls.Add(label6);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(listOutput);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(button1);
+            Controls.Add(label1);
+            Controls.Add(listFiles);
+            Controls.Add(txtPort);
+            Controls.Add(txtIP);
+            Controls.Add(txtName);
+            Controls.Add(btnClose);
+            Controls.Add(txtMessage);
+            Controls.Add(btnConnect);
+            Controls.Add(btnSend);
+            Name = "Main";
+            Text = "Client";
+            Load += Main_Load;
+            ResumeLayout(false);
+            PerformLayout();
         }
+
+        #endregion
+
     }
+}
 }
