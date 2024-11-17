@@ -206,6 +206,14 @@ namespace Client
                 using (FileStream fs = new FileStream(fullFileName, FileMode.Create, FileAccess.Write))
                 {
                     long bytesReceived = 0;
+                    while (bytesReceived < fileSize)
+                    {
+                        // Calculate how many bytes to read in this iteration
+                        int bytesToRead = (int)Math.Min(buffer.Length, fileSize - bytesReceived);
+
+                        // Receive data into the buffer
+                        receivedBytes = sck.Receive(buffer, 0, bytesToRead, SocketFlags.None);
+
 
 
 
