@@ -1,5 +1,7 @@
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Xml.Linq;
 
 namespace Client
 {
@@ -40,6 +42,42 @@ namespace Client
             if (s > 0)
             {
                 MessageBox.Show("Data Sent !");
+            }
+        }
+
+
+        private void button1_Click_1(object sender, EventArgs e)//connection button
+        {
+            string ip = txtIP.Text;       // Get the IP address from the textbox
+            string portText = txtPort.Text;  // Get the port text from the textbox
+
+            // Validate and parse the port
+            if (int.TryParse(portText, out int port))
+            {
+                // kushti qe na siguron se porti eshte ne rangun (0-65535)
+                if (port >= 0 && port <= 65535)
+                {
+                    // validojme ip adresen
+                    if (IPAddress.TryParse(ip, out _))
+                    {
+                        
+                    }
+                    else
+                    {
+                        // Ne rast se IP nuk eshte valide
+                        MessageBox.Show("Invalid IP address.");
+                    }
+                }
+                else
+                {
+                    // Ne rast se porti nuk eshte valid
+                    MessageBox.Show("Port number must be between 0 and 65535.");
+                }
+            }
+            else
+            {
+                // port jo valid
+                MessageBox.Show("Invalid port number.");
             }
         }
 
