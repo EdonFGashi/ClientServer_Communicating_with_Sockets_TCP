@@ -293,6 +293,8 @@ namespace Client
             request += txtSelectedFile.Text;
             sck.Send(Encoding.Default.GetBytes(request));
         }
+      
+       
 
 
     }
