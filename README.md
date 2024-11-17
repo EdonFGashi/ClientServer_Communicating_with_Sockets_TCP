@@ -4,7 +4,7 @@
   </a>
 
 <h2 align="center">Fakulteti i Inxhinierisë Elektrike dhe Kompjuterike</h2>
-<h3 align="center">Lënda: Rrjeta kompjuterike</h3>
+<h3 align="center">Lënda: Rrjeta Kompjuterike</h3>
 <h2 align="center">Projekti: Sistem për komunikim me sockets, me protokollin TCP i ndërtuar me arkuitekturën klient - server</h2>
 <p align="left">Profesori: Blerim Rexha</p>
 <p align="left">Asistenti: Mërgim Hoti</p>
@@ -43,9 +43,11 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
 - Aktivizimi i serverit për dëgjim në një port të caktuar dhe lidhja e klientit me server.
    - Në momentin që butoni Listen klikohet, ai do ta ndërrojë ngjyrën për të sinjalizuar se dëgjimi është duke u bërë në portin e specifikuar.
    - Nëse klienti tenton që të kyçet në një port me numër tjetër, lidhja dështon dhe i shfaqet një mesazh sinjalizues brenda një dritare të re.
+<p align="center">
 <a>
     <img src="GIF 1 - Listening and connecting.gif" alt="Logo" height="430" align="center">
   </a>
+  </p>
 <br><br><br>
 
 - Caktimi i privilegjeve nga serveri dhe dërgimi tek klienti i emrave të fileve që gjenden në një lokacion (path) të specifikuar.
@@ -55,18 +57,22 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
       - Execute
   - Përmes butonit "Update file access" serveri i dërgon emrat e fileve që gjenden brenda lokacionit të caktuar në fushën "Shared folder path"
   - Tek klienti emrat e fileve shfaqen në fushën "Server files"
+<p align="center">
 <a>
     <img src="GIF 2 - Giving permissions and sharing files.gif" alt="Logo" height="350" align="center">
   </a>
+</p>
 
 <br><br><br>
 
 - Dërgimi i mesazheve nga klienti dhe shfaqja e tyre tek serveri
   - Klienti e shkruan mesazhin e tij në fushën "Data" dhe e klikon butonin "Send"
   - Tek serveri në menunë "Chat" shfaqet emri i klientit që ka dërguar mesazh, si dhe mesazhi që e ka dërguar
+<p align="center">
 <a>
     <img src="GIF 3 - exchanging messages.gif" alt="Logo" height="350" align="center">
   </a>
+</p>
 
 <br><br><br>
 
@@ -77,8 +83,10 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
     - Për write e shkruajmë mesazhin në fushën "Data", e zgjedhim filen ku dëshirojmë të shkruajmë dhe klikojmë butonin "Write"
     - Shkrimi lejohet vetëm në filet e formatit ".txt"
     - Për execute e zgjedhim filen që dëshirojmë ta ekzekutojmë, klikojmë butonin "Execute" dhe rezultati i ekzekutimit do të shfaqet në fushën "Output" si "EXECUTION RESULT:..."
+<p align="center">
 <a>
     <img src="GIF 4 - Reading and Writing.gif" alt="Logo" height="430" align="center">
   </a>
+</p>
 
    <a href="#top">Kthehu në fillim ↑</a>
