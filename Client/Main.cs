@@ -276,6 +276,16 @@ namespace Client
 
 
         }
+        //krijimi dhe dergimi i kerkeses per write
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string request = "~writ~";
+            request += txtSelectedFile.Text;
+            request += "~";
+            request += txtMessage.Text;
+            request += " ";
+            sck.Send(Encoding.Default.GetBytes(request));
+        }
 
 
     }
