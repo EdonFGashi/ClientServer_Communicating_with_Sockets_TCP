@@ -288,7 +288,29 @@ namespace Client
         }
 
         #endregion
-
+        private Button btnSend;
+        private Button btnConnect;
+        private TextBox txtMessage;
+        private Button btnClose;
+        private TextBox txtIP;
+        private TextBox txtPort;
+        private TextBox txtName;
+        private ListBox listFiles;
+        private Label label1;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private ListBox listBox2;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private TextBox txtSelectedFile;
+        private Label label7;
+        private ListBox listOutput;
+        private TextBox txtSavingFilePath;
+        private Label label8;
     }
 }
-}
+
