@@ -172,7 +172,17 @@ namespace Client
             listOutput.Name = "listOutput";
             listOutput.Size = new Size(815, 124);
             listOutput.TabIndex = 12;
-            
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(16, 50);
+            label2.Name = "label2";
+            label2.Size = new Size(24, 20);
+            label2.TabIndex = 13;
+            label2.Text = "IP:";
+            label2.Click += label2_Click;
+
         }
     }
 }
