@@ -286,6 +286,13 @@ namespace Client
             request += " ";
             sck.Send(Encoding.Default.GetBytes(request));
         }
+        //krijimi dhe dergimi i kerkeses per execute
+        private void button3_Click(object sender, EventArgs e)
+        {
+            string request = "~exec~";
+            request += txtSelectedFile.Text;
+            sck.Send(Encoding.Default.GetBytes(request));
+        }
 
 
     }
