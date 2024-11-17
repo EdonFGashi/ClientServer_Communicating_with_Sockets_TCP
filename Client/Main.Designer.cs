@@ -191,6 +191,15 @@ namespace Client
             label3.Size = new Size(38, 20);
             label3.TabIndex = 14;
             label3.Text = "Port:";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(16, 83);
+            label4.Name = "label4";
+            label4.Size = new Size(52, 20);
+            label4.TabIndex = 15;
+            label4.Text = "Name:";
 
         }
     }
