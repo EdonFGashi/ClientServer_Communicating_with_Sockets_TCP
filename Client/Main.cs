@@ -12,13 +12,13 @@ namespace Client
     public partial class Main : Form
     {
 
-            Socket sck;
-    private string clientName = "";
-    private bool nameSent = false;  // Flag to check if name is sent
+        Socket sck;
+        private string clientName = "";
+        private bool nameSent = false;  // Flag to check if name is sent
 
-    private CancellationTokenSource cancellationTokenSource;
+        private CancellationTokenSource cancellationTokenSource;
 
-    
+
         public Main()
         {
             InitializeComponent();
@@ -111,16 +111,16 @@ namespace Client
             CancellationToken token = cancellationTokenSource.Token;
             new Thread(() =>
             {
-            while (!token.IsCancellationRequested)
-            {
-                try
+                while (!token.IsCancellationRequested)
                 {
+                    try
+                    {
 
 
-                    byte[] buffer = new byte[8192]; // bufer per ruajtjen e te dhenave te pranuara
+                        byte[] buffer = new byte[8192]; // bufer per ruajtjen e te dhenave te pranuara
 
-                    // Receive the first part: Check if the message is a file transfer request
-                    int receivedBytes = sck.Receive(buffer);
+                        // Receive the first part: Check if the message is a file transfer request
+                        int receivedBytes = sck.Receive(buffer);
 
                         if (receivedData.StartsWith("SERVER WARNING: "))
                         {
@@ -153,24 +153,30 @@ namespace Client
                             listOutput.Items.Add(receivedData);
                         }
                     }
-                    }
                     catch (Exception ex)
                     {
                         MessageBox.Show("Error while communicating with server, please try again !");
                     }
                 }
-    }).Start();
-}
+            }).Start();
+        }
 
-
-                    }
-
-
-
-
-
-
-
+        //metoda qe merr emrin e files qe klikohet per read, write apo execute
+        private void ListView_ItemActivate(object sender, EventArgs e)
+        {
+            string selectedItem = listFiles.SelectedItem.ToString();
+            txtSelectedFile.Text = selectedItem;
+        }
 
 
     }
+
+
+
+
+
+
+
+
+
+}
