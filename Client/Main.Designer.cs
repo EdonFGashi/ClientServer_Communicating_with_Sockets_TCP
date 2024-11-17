@@ -182,6 +182,15 @@ namespace Client
             label2.TabIndex = 13;
             label2.Text = "IP:";
             label2.Click += label2_Click;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(228, 51);
+            label3.Name = "label3";
+            label3.Size = new Size(38, 20);
+            label3.TabIndex = 14;
+            label3.Text = "Port:";
 
         }
     }
