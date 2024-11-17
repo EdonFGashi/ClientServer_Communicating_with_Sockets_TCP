@@ -154,7 +154,17 @@ namespace Client
             button2.Text = "Write";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
-            #endregion
+            // 
+            // button3
+            // 
+            button3.Location = new Point(733, 240);
+            button3.Name = "button3";
+            button3.Size = new Size(94, 29);
+            button3.TabIndex = 11;
+            button3.Text = "Execute";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
+
         }
     }
 }
