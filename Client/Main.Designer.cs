@@ -164,7 +164,15 @@ namespace Client
             button3.Text = "Execute";
             button3.UseVisualStyleBackColor = true;
             button3.Click += button3_Click;
-
+            // 
+            // listOutput
+            // 
+            listOutput.FormattingEnabled = true;
+            listOutput.Location = new Point(12, 343);
+            listOutput.Name = "listOutput";
+            listOutput.Size = new Size(815, 124);
+            listOutput.TabIndex = 12;
+            
         }
     }
 }
