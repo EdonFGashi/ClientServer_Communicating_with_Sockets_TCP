@@ -16,9 +16,6 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 namespace Client
 {
 
-
-
-
     public partial class Main : Form
     {
 
@@ -45,7 +42,7 @@ namespace Client
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void SendClick(object sender, EventArgs e)
         {
             int s = sck.Send(Encoding.Default.GetBytes(txtMessage.Text));
 
@@ -56,7 +53,7 @@ namespace Client
         }
 
 
-        private void button1_Click_1(object sender, EventArgs e)//connection button
+        private void ConnectionClick(object sender, EventArgs e)//connection button
         {
             string ip = txtIP.Text;       // Get the IP address from the textbox
             string portText = txtPort.Text;  // Get the port text from the textbox
@@ -240,7 +237,7 @@ namespace Client
 
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void CloseClick(object sender, EventArgs e)
         {
             //kerkesa per ndalimin e threadit
             cancellationTokenSource?.Cancel();
@@ -268,7 +265,7 @@ namespace Client
         }
 
         //krijimi dhe dergimi i kerkeses per read
-        private void button1_Click_2(object sender, EventArgs e)
+        private void ReadClick(object sender, EventArgs e)
         {
             string request = "~read~";
             request += txtSelectedFile.Text;
@@ -277,7 +274,7 @@ namespace Client
 
         }
         //krijimi dhe dergimi i kerkeses per write
-        private void button2_Click(object sender, EventArgs e)
+        private void WriteClick(object sender, EventArgs e)
         {
             string request = "~writ~";
             request += txtSelectedFile.Text;
@@ -287,7 +284,7 @@ namespace Client
             sck.Send(Encoding.Default.GetBytes(request));
         }
         //krijimi dhe dergimi i kerkeses per execute
-        private void button3_Click(object sender, EventArgs e)
+        private void ExecuteClick(object sender, EventArgs e)
         {
             string request = "~exec~";
             request += txtSelectedFile.Text;

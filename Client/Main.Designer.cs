@@ -63,7 +63,7 @@ namespace Client
             btnSend.TabIndex = 0;
             btnSend.Text = "Send";
             btnSend.UseVisualStyleBackColor = false;
-            btnSend.Click += button1_Click;
+            btnSend.Click += SendClick;
             // 
             // btnConnect
             // 
@@ -74,7 +74,7 @@ namespace Client
             btnConnect.TabIndex = 1;
             btnConnect.Text = "Connect";
             btnConnect.UseVisualStyleBackColor = false;
-            btnConnect.Click += button1_Click_1;
+            btnConnect.Click += ConnectionClick;
             // 
             // txtMessage
             // 
@@ -93,7 +93,7 @@ namespace Client
             btnClose.TabIndex = 3;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = false;
-            btnClose.Click += btnClose_Click;
+            btnClose.Click += CloseClick;
             // 
             // txtIP
             // 
@@ -143,7 +143,7 @@ namespace Client
             button1.TabIndex = 9;
             button1.Text = "Read";
             button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click_2;
+            button1.Click += ReadClick;
             // 
             // button2
             // 
@@ -153,7 +153,7 @@ namespace Client
             button2.TabIndex = 10;
             button2.Text = "Write";
             button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            button2.Click += WriteClick;
             // 
             // button3
             // 
@@ -163,7 +163,7 @@ namespace Client
             button3.TabIndex = 11;
             button3.Text = "Execute";
             button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            button3.Click += ExecuteClick;
             // 
             // listOutput
             // 
