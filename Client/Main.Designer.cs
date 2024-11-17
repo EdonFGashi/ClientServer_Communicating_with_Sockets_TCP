@@ -225,6 +225,15 @@ namespace Client
             txtSelectedFile.Name = "txtSelectedFile";
             txtSelectedFile.Size = new Size(338, 27);
             txtSelectedFile.TabIndex = 18;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(389, 207);
+            label7.Name = "label7";
+            label7.Size = new Size(94, 20);
+            label7.TabIndex = 19;
+            label7.Text = "Selected file:";
 
         }
     }
