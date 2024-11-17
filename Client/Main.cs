@@ -182,6 +182,13 @@ namespace Client
             string selectedItem = listFiles.SelectedItem.ToString();
             txtSelectedFile.Text = selectedItem;
         }
+        void ReceiveFile(string fileName)
+        {
+            try
+            {
+                // Prepare a buffer to receive file data
+                byte[] buffer = new byte[8192];
+                int receivedBytes = 0;
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
