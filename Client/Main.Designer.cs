@@ -218,6 +218,13 @@ namespace Client
             label6.Size = new Size(58, 20);
             label6.TabIndex = 17;
             label6.Text = "Output:";
+            // 
+            // txtSelectedFile
+            // 
+            txtSelectedFile.Location = new Point(489, 204);
+            txtSelectedFile.Name = "txtSelectedFile";
+            txtSelectedFile.Size = new Size(338, 27);
+            txtSelectedFile.TabIndex = 18;
 
         }
     }
