@@ -55,5 +55,24 @@ namespace Multi_Connections_Server
                 Console.WriteLine($"Error receiving file: {ex.Message}");
             }
         }
+          public void DownloadFile(Socket clientSocket)
+        {
+            using (FolderBrowserDialog folderDialog = new FolderBrowserDialog())
+            {
+                DialogResult result = folderDialog.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    string savePath = "C:\\Users\\Dell\\Desktop";
+
+                    // Call the method to receive the file and save it
+                    ReceiveFileFromServer(clientSocket, savePath);
+                }
+                else
+                {
+                    Console.WriteLine("No folder selected. File not downloaded.");
+                }
+            }
+        }
     }
 }
