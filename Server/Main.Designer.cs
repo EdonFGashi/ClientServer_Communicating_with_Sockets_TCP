@@ -173,6 +173,7 @@
             // 
             // picListening
             // 
+            picListening.Image = Properties.Resources.WifiLogo;
             picListening.Location = new Point(798, 10);
             picListening.Name = "picListening";
             picListening.Size = new Size(58, 56);
@@ -189,6 +190,7 @@
             btnShowIP.TabIndex = 6;
             btnShowIP.Text = "Show IP";
             btnShowIP.UseVisualStyleBackColor = false;
+            btnShowIP.Click += btnShowIP_Click;
             // 
             // label2
             // 

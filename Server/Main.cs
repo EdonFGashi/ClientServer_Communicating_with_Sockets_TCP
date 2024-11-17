@@ -18,6 +18,7 @@ using System.Xml.Linq;
 using System.Globalization;
 using Microsoft.Win32.SafeHandles;
 using System.Diagnostics;
+using System.Net.NetworkInformation;
 
 
 namespace Server
@@ -175,12 +176,6 @@ namespace Server
                             listClients.Items[i].SubItems[3].Text = DateTime.Now.ToString();
                             listBox1.Items.Add(client.clientName + " -- " + Encoding.Default.GetString(data));
 
-
-
-
-
-
-
                             //nese karakteri i pare esht ~ atehere kemi te bejme me ndonje kerkese per read, write apo execute
                             if (clientRequest.StartsWith("~"))
                             {
@@ -194,12 +189,7 @@ namespace Server
                                     if (client.Permissions.HasPermission(filePathRequest, FilePermissions.Read))
                                     {
                                         //// Client has read permission, send file to client
-                                        ///
 
-
-
-
-                                        //////////////////////////////////////
                                         listBox1.Items.Add("Request from client: " + client.clientName + " for reading file " + filePathRequest + " has accepted. Time: " + DateTime.Now);
                                         client.sck.Send(Encoding.Default.GetBytes("RECEIVE FILE"));
                                         filePathRequest += clientRequest.Substring(6);
@@ -221,13 +211,8 @@ namespace Server
                                     //kontrollojme nese klienti ka leje per kete kerkese
                                     if (client.Permissions.HasPermission(filePathRequest, FilePermissions.Write))
                                     {
-                                        //// Client has read permission, send file to client
-                                        //SendFileToClient(clientSocket, requestedFile);
+                                        //// Client has write permission
 
-
-
-
-                                        ///////////////////////////////////////
                                         listBox1.Items.Add("Request from client: " + client.clientName + " for writing file " + filePathRequest + " has accepted. Time: " + DateTime.Now);
                                         client.sck.Send(Encoding.Default.GetBytes("WRITE FILE"));
                                         string[] writeRequest = clientRequest.Split(new[] { '~' }, StringSplitOptions.RemoveEmptyEntries);
@@ -251,8 +236,7 @@ namespace Server
                                     //kontrollojme nese klienti ka leje per kete kerkese
                                     if (client.Permissions.HasPermission(filePathRequest, FilePermissions.Execute))
                                     {
-                                        //// Client has read permission, send file to client
-                                        //SendFileToClient(clientSocket, requestedFile);
+                                        //// Client has execute permission
                                         listBox1.Items.Add("Request from client: " + client.clientName + " for executing file " + filePathRequest + " has accepted. Time: " + DateTime.Now);
                                         client.sck.Send(Encoding.Default.GetBytes("SERVER: File is executing..."));
 
@@ -473,11 +457,9 @@ namespace Server
         }
 
 
-
-        //Metod per menaxhimin e permissions
         private void button1_Click_2(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnListen_Click(object sender, EventArgs e)
@@ -495,7 +477,7 @@ namespace Server
             sharedFolderPath = txtSharedFolderPath.Text.ToString();
         }
 
-        //////////////////////////////////////////
+
         private void button2_Click(object sender, EventArgs e)
         {
             string sharedFolderPath = txtSharedFolderPath.Text;
@@ -606,9 +588,6 @@ namespace Server
                 txtFiles.Text = files;
                 listBox1.Items.Add(files);
 
-
-
-
                 byte[] fileNameBytes = Encoding.Default.GetBytes(files);
                 for (int i = 0; i < listClients.Items.Count; i++)
                 {
@@ -632,5 +611,52 @@ namespace Server
                 listBox1.Items.Add("Error while sending file names !");
             }
         }
+
+        private void btnShowIP_Click(object sender, EventArgs e)
+        {
+            string ipAddress = GetLocalIPAddress();
+            if (ipAddress != null)
+            {
+                txtIP.Text = ipAddress;
+            }
+            else
+            {
+                txtIP.Text = "Could not find local IP address.";
+            }
+
+        }
+
+
+        //funksioni qe shfaq IP adresen
+        static string GetLocalIPAddress()
+        {
+            string wifiIP = null;
+
+            // iteron ne nderfaqet e rrjetit
+            foreach (NetworkInterface ni in NetworkInterface.GetAllNetworkInterfaces())
+            {
+                // kontrollon nese ajo nderfaqe eshte e wi-fi adapterit
+                if (ni.NetworkInterfaceType == NetworkInterfaceType.Wireless80211 && ni.OperationalStatus == OperationalStatus.Up)
+                {
+                    // merr vetit e ip
+                    IPInterfaceProperties ipProps = ni.GetIPProperties();
+                    foreach (UnicastIPAddressInformation ipAddr in ipProps.UnicastAddresses)
+                    {
+                        // kontrollon nese eshte ipv4
+                        if (ipAddr.Address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork)
+                        {
+                            wifiIP = ipAddr.Address.ToString();
+                            break;
+                        }
+                    }
+                }
+
+                // del nga unaza ne momentin kur e gjen ip
+                if (wifiIP != null)
+                    break;
+            }
+
+            return wifiIP;
+        }
     }
-}
+    }
