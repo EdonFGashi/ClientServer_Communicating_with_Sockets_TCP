@@ -198,6 +198,10 @@ namespace Client
                 receivedBytes = sck.Receive(buffer, 0, fileNameLength, SocketFlags.None);
                 string receivedFileName = Encoding.Default.GetString(buffer, 0, fileNameLength);
 
+                // Receive the file size
+                receivedBytes = sck.Receive(buffer, 0, 8, SocketFlags.None);
+                long fileSize = BitConverter.ToInt64(buffer, 0); // The size of the file to be received
+
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
