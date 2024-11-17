@@ -213,8 +213,11 @@ namespace Client
 
                         // Receive data into the buffer
                         receivedBytes = sck.Receive(buffer, 0, bytesToRead, SocketFlags.None);
+                        // Write the received bytes to the file
+                        fs.Write(buffer, 0, receivedBytes);
+                        bytesReceived += receivedBytes;
 
-                     
+
                     }
                 }
 
