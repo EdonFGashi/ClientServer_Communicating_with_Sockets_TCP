@@ -242,6 +242,16 @@ namespace Client
             txtSavingFilePath.Size = new Size(441, 27);
             txtSavingFilePath.TabIndex = 20;
             txtSavingFilePath.Text = "C:\\Users\\Dell\\Desktop\\ClientFiles";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(268, 298);
+            label8.Name = "label8";
+            label8.Size = new Size(115, 20);
+            label8.TabIndex = 21;
+            label8.Text = "File saving path:";
+            label8.Click += label8_Click;
 
         }
     }
