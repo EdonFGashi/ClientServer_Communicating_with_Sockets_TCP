@@ -268,9 +268,176 @@ namespace Server
         }
 
 
+        //metoda per dergimin e files nga serveri te klienti
+        private void SendFileToClient(Socket clientSocket, string filePath)
+        {
+            try
+            {
+                if (!File.Exists(filePath))
+                {
+                    clientSocket.Send(Encoding.Default.GetBytes("ERROR: File not found"));
+                    return;
+                }
+
+                byte[] fileBytes = File.ReadAllBytes(filePath);
+
+                // Send the length of the file name
+                byte[] fileNameBytes = Encoding.Default.GetBytes(Path.GetFileName(filePath));
+                clientSocket.Send(BitConverter.GetBytes(fileNameBytes.Length)); // File name length
+                clientSocket.Send(fileNameBytes); // File name
 
 
 
+
+                // Send the file size
+                long fileSize = fileBytes.Length;
+                clientSocket.Send(BitConverter.GetBytes(fileSize)); // File size
+
+                // Send the file data in chunks
+                int chunkSize = 8192; // 8 KB per chunk
+                int bytesSent = 0;
+                while (bytesSent < fileSize)
+                {
+                    int bytesToSend = (int)Math.Min(chunkSize, fileSize - bytesSent);
+                    clientSocket.Send(fileBytes, bytesSent, bytesToSend, SocketFlags.None);
+                    bytesSent += bytesToSend;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                clientSocket.Send(Encoding.Default.GetBytes("ERROR: Failed to send file"));
+            }
+        }
+
+
+        //Metoda per shkrim ne file nga klienti
+        public void writeToFile(string filePath, string textToWrite)
+        {
+            string fullFilePath = @txtSharedFolderPath.Text; // Specify the full file path
+            fullFilePath += filePath;
+            try
+            {
+                // Create a StreamWriter to write to the file
+                using (StreamWriter writer = new StreamWriter(fullFilePath, append: false)) // Set 'append' to 'false' to overwrite the file
+                {
+                    writer.WriteLine(textToWrite);
+                }
+                MessageBox.Show("File has written successfully !");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error while writing in file !");
+            }
+        }
+
+
+
+
+        //Metoda per ekzekutim te skriptave
+        string ExecuteScript(string scriptPath)
+        {
+            string scriptType = scriptPath.Substring(scriptPath.Length - 2);
+            string fullScriptPath = @txtSharedFolderPath.Text; // Specify the full file path
+            fullScriptPath += scriptPath;
+
+            try
+            {
+                // Check if the script or executable exists
+                if (File.Exists(fullScriptPath))
+                {
+                    ProcessStartInfo startInfo = new ProcessStartInfo();
+                    string commandArguments = "";
+
+                    // Based on the script type, set up the appropriate process
+                    switch (scriptType.ToLower())
+                    {
+                        case "pp":
+                            // For C++, assume that scriptPath is the path to the executable (.exe or .out)
+                            startInfo.FileName = fullScriptPath; // Just execute the C++ program directly
+                            break;
+
+                        case "js":
+                            // For JavaScript, assume that Node.js is installed, and scriptPath is the path to the .js file
+                            startInfo.FileName = "node";
+                            commandArguments = fullScriptPath; // Run the script with Node.js
+                            break;
+
+                        case "ss":
+                            // For Java, assume that the scriptPath is the compiled .class or .jar file
+                            if (fullScriptPath.EndsWith(".jar"))
+                            {
+                                // If it's a JAR file, use the `-jar` option
+                                startInfo.FileName = "java";
+                                commandArguments = $"-jar {fullScriptPath}";
+                            }
+                            else if (fullScriptPath.EndsWith(".class"))
+                            {
+                                // For Java, assume that the scriptPath is the compiled .class or .jar file
+                                startInfo.FileName = "java";
+                                string className = Path.GetFileNameWithoutExtension(fullScriptPath); // Class name is the file name without extension
+
+                                // If it's a .class file, set classpath appropriately
+                                string directory = Path.GetDirectoryName(fullScriptPath);
+                                commandArguments = $"-cp \"{directory}\" {className}";
+                            }
+                            break;
+
+                        case "py":
+                            // For Python, assume scriptPath is the path to the Python script
+                            startInfo.FileName = "python"; // Make sure Python is in the system's PATH
+                            commandArguments = fullScriptPath; // Run the script with Python
+                            break;
+
+                        default:
+                            // If we don't recognize the script type, return an error message
+                            return $"Unknown script type: {scriptType}";
+                    }
+
+
+
+                    startInfo.Arguments = commandArguments;
+                    startInfo.CreateNoWindow = true;  // Do not create a new window for the process
+                    startInfo.UseShellExecute = false;  // Do not use the system shell for execution
+                    startInfo.RedirectStandardOutput = true;  // Capture the output of the script
+                    startInfo.RedirectStandardError = true;  // Capture any error output
+
+                    Process process = new Process();
+                    process.StartInfo = startInfo;
+
+                    // Start the process (this will execute the script)
+                    process.Start();
+
+                    // Capture and return the output of the script
+                    string output = process.StandardOutput.ReadToEnd();
+                    string error = process.StandardError.ReadToEnd();
+
+                    // If there's no output, return the error message instead
+                    if (string.IsNullOrEmpty(output))
+                    {
+                        output = error;
+                    }
+
+
+                    process.WaitForExit(); // Wait for the process to finish
+
+                    return output;
+
+                }
+                else
+                {
+                    return "Script file not found.";
+                    listBox1.Items.Add("Script file not found");
+                    MessageBox.Show("Scrit nuk u gjet");
+                }
+            }
+            catch (Exception ex)
+            {
+                return $"Error executing script: {ex.Message}";
+                MessageBox.Show("Erorrr nuk u gjet");
+            }
+        }
 
 
 
@@ -342,6 +509,53 @@ namespace Server
         private void btnListen_Click(object sender, EventArgs e)
         {
 
+        }
+
+        //////////////////////////////////////////
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string sharedFolderPath = txtSharedFolderPath.Text;
+            string files = "~";
+            try
+            {
+                // Get all file paths in the directory
+                string[] filePaths = Directory.GetFiles(sharedFolderPath);
+
+                // Loop through each file and print the file name
+                foreach (string filePath in filePaths)
+                {
+                    string fileName = Path.GetFileName(filePath); // Extract just the file name
+                    files += fileName + "~";
+
+                }
+                txtFiles.Text = files;
+                listBox1.Items.Add(files);
+
+
+
+
+                byte[] fileNameBytes = Encoding.Default.GetBytes(files);
+                for (int i = 0; i < listClients.Items.Count; i++)
+                {
+                    Client client = listClients.Items[i].Tag as Client;
+
+                    if (client.Permissions.HasPermission(sharedFolderPath, FilePermissions.Read)
+                        || client.Permissions.HasPermission(sharedFolderPath, FilePermissions.Write)
+                        || client.Permissions.HasPermission(sharedFolderPath, FilePermissions.Execute)
+                        || client.Permissions.HasPermission(sharedFolderPath, FilePermissions.ReadWrite)
+                        || client.Permissions.HasPermission(sharedFolderPath, FilePermissions.All))
+                    {
+                        client.sck.Send(fileNameBytes);
+                    }
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+                listBox1.Items.Add("Error while sending file names !");
+            }
         }
     }
 }
