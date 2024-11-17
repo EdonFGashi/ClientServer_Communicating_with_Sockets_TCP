@@ -168,6 +168,27 @@ namespace Client
             txtSelectedFile.Text = selectedItem;
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            //kerkesa per ndalimin e threadit
+            cancellationTokenSource?.Cancel();
+
+            //mbylle formen the liroj resurset e socketit
+            sck.Close();
+            sck.Dispose();
+
+            //pret deri sa threadi ta perfundoje punen
+            cancellationTokenSource?.Dispose();
+
+            //mbylle formen
+            Close();
+        }
+
 
     }
 
