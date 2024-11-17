@@ -25,7 +25,7 @@ Meqë ky sistem mund të përdoret në pajisje të ndryshme, duke ndarë rolin e
 - Serveri
   - Mundëson dëgjimin e kërkesave në një port të caktuar
   - Shfaq klientët e lidhur në formë tabelare me të dhënat e tyre
-  - Mundëson menaxhimin e përmissions për secilin klient në mënyrë të veçantë
+  - Mundëson menaxhimin e permissions për secilin klient në mënyrë të veçantë
   - Shfaq kërkesat dhe rrjedhjen e tyre
   - Shfaq mesazhet e klientëve
  
@@ -41,7 +41,7 @@ Meqë ky sistem mund të përdoret në pajisje të ndryshme, duke ndarë rolin e
 Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni të mirë të GUI. Ka dy ndërfaqe kryesore që është ajo për klient dhe për server.Në vazhdim përmes disa GIF ilustrimeve kemi treguar mënyrën se si përdoret ky program
 
 - Aktivizimi i serverit për dëgjim në një port të caktuar dhe lidhja e klientit me server.
-   - Në momentin që butoni Listen klikohet, ai do ta ndërrojë ngjyrën për të sinjalizuar se dëgjimi është duke u bërë në portin e specifikuar.
+   - Në momentin që butoni "Listen" klikohet, ai do ta ndërrojë ngjyrën për të sinjalizuar se dëgjimi është duke u bërë në portin e specifikuar.
    - Nëse klienti tenton që të kyçet në një port me numër tjetër, lidhja dështon dhe i shfaqet një mesazh sinjalizues brenda një dritare të re.
 <p align="center">
 <a>
@@ -67,7 +67,7 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
 
 - Dërgimi i mesazheve nga klienti dhe shfaqja e tyre tek serveri
   - Klienti e shkruan mesazhin e tij në fushën "Data" dhe e klikon butonin "Send"
-  - Tek serveri në menunë "Chat" shfaqet emri i klientit që ka dërguar mesazh, si dhe mesazhi që e ka dërguar
+  - Tek serveri në menu "Chat" shfaqet emri i klientit që ka dërguar mesazh, si dhe mesazhi që e ka dërguar
 <p align="center">
 <a>
     <img src="GIF 3 - exchanging messages.gif" alt="Logo" height="350" align="center">
@@ -88,5 +88,5 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
     <img src="GIF 4 - Reading and Writing.gif" alt="Logo" height="430" align="center">
   </a>
 </p>
-
+<br><br>
    <a href="#top">Kthehu në fillim ↑</a>
