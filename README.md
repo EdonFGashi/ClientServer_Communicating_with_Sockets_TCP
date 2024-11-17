@@ -44,7 +44,7 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
    - Në momentin që butoni Listen klikohet, ai do ta ndërrojë ngjyrën për të sinjalizuar se dëgjimi është duke u bërë në portin e specifikuar.
    - Nëse klienti tenton që të kyçet në një port me numër tjetër, lidhja dështon dhe i shfaqet një mesazh sinjalizues brenda një dritare të re.
 <a>
-    <img src="GIF 1 - Listening and connecting.gif" alt="Logo" height="400">
+    <img src="GIF 1 - Listening and connecting.gif" alt="Logo" height="430" align="center">
   </a>
 <br><br><br>
 
@@ -56,7 +56,7 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
   - Përmes butonit "Update file access" serveri i dërgon emrat e fileve që gjenden brenda lokacionit të caktuar në fushën "Shared folder path"
   - Tek klienti emrat e fileve shfaqen në fushën "Server files"
 <a>
-    <img src="GIF 2 - Giving permissions and sharing files.gif" alt="Logo" height="350">
+    <img src="GIF 2 - Giving permissions and sharing files.gif" alt="Logo" height="350" align="center">
   </a>
 
 <br><br><br>
@@ -65,7 +65,7 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
   - Klienti e shkruan mesazhin e tij në fushën "Data" dhe e klikon butonin "Send"
   - Tek serveri në menunë "Chat" shfaqet emri i klientit që ka dërguar mesazh, si dhe mesazhi që e ka dërguar
 <a>
-    <img src="GIF 3 - exchanging messages.gif" alt="Logo" height="350">
+    <img src="GIF 3 - exchanging messages.gif" alt="Logo" height="350" align="center">
   </a>
 
 <br><br><br>
@@ -78,7 +78,7 @@ Ky sistem ka një përdorim mjaftë të thjeshtë për shkak të një dizajni t�
     - Shkrimi lejohet vetëm në filet e formatit ".txt"
     - Për execute e zgjedhim filen që dëshirojmë ta ekzekutojmë, klikojmë butonin "Execute" dhe rezultati i ekzekutimit do të shfaqet në fushën "Output" si "EXECUTION RESULT:..."
 <a>
-    <img src="GIF 4 - Reading and Writing.gif" alt="Logo" height="400">
+    <img src="GIF 4 - Reading and Writing.gif" alt="Logo" height="430" align="center">
   </a>
 
    <a href="#top">Kthehu në fillim ↑</a>
