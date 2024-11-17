@@ -190,6 +190,27 @@ namespace Client
         }
 
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //krijimi dhe dergimi i kerkeses per read
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            string request = "~read~";
+            request += txtSelectedFile.Text;
+            sck.Send(Encoding.Default.GetBytes(request));
+
+
+        }
+
+
     }
 
 
