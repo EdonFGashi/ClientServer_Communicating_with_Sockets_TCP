@@ -60,7 +60,29 @@ namespace Client
                     // validojme ip adresen
                     if (IPAddress.TryParse(ip, out _))
                     {
-                        
+                        try
+                        {
+                            // e lidhim socketin me ip dhe portin e dhene
+                            sck.Connect(ip, port);
+
+                            //dergimi i emrit te klientit ne fillim te lidhjes
+                            if (!nameSent)
+                            {
+                                string name = txtName.Text;
+                                byte[] nameBytes = Encoding.Default.GetBytes(name);
+                                sck.Send(nameBytes);
+                                nameSent = true;  // per te treguar se emri eshte vendosur
+                                clientName = name;
+                                client_Received(); // thirrja e metodes qe e krijon threadin per klientin
+
+                                MessageBox.Show("Connected and name sent!");
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            // Ne rast te deshtimit te lidhjes
+                            MessageBox.Show($"Connection failed: {ex.Message}");
+                        }
                     }
                     else
                     {
