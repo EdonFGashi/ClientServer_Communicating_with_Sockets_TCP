@@ -190,6 +190,11 @@ namespace Client
                 byte[] buffer = new byte[8192];
                 int receivedBytes = 0;
 
+                // First, receive the length of the file name
+                receivedBytes = sck.Receive(buffer, 0, 4, SocketFlags.None);
+                int fileNameLength = BitConverter.ToInt32(buffer, 0); // The length of the file name
+                string fullFileName = Path.Combine(@txtSavingFilePath.Text, fileName); // Specify the path to save the file
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
