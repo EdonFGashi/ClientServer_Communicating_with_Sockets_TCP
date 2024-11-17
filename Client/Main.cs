@@ -293,7 +293,10 @@ namespace Client
             request += txtSelectedFile.Text;
             sck.Send(Encoding.Default.GetBytes(request));
         }
-      
+       private void label8_Click(object sender, EventArgs e)
+        {
+
+        }
        
 
 
